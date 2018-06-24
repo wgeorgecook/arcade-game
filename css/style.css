@@ -1,3 +1,7 @@
 body {
     text-align: center;
 }
+
+#winmodal, #charselection {
+    display: none;
+}
