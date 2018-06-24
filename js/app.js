@@ -43,9 +43,10 @@ const Enemy = function(x, y) {
 // This class requires an update(), render() and
 // a handleInput() method.
 const Player = function(x, y) {
+    // starting position
     this.x = x;
     this.y = y;
-    this.sprite = 'images/char-boy.png';
+    this.sprite = 'images/char-princess-girl.png';
 
     this.update = function(keyPress) {
         if (keyPress === 'left') {
@@ -94,7 +95,7 @@ const Player = function(x, y) {
     }
 
     this.handleInput = function(keyPress) {
-        // Pass the event listener to the update
+        // Pass the event listener response to the update method
         this.update(keyPress);
     };
 }
@@ -113,7 +114,7 @@ let bug2 = new Enemy(-200, 140);
 let bug3 = new Enemy(-400, 225);
 
 let player = new Player(200, 400);
-let allEnemies = [bug1, bug2, bug3];
+const allEnemies = [bug1, bug2, bug3];
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
