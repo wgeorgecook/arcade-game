@@ -83,7 +83,12 @@ var Engine = (function(global) {
     }
 
     function checkCollisions() {
-        return null;
+        allEnemies.forEach(function(enemy) {
+            if ( ( (enemy.y + 45) > player.y && player.y > (enemy.y - 45) ) && ((enemy.x + 45) > player.x && player.x > (enemy.x - 45))  ){
+                console.log(`Player hit by ${enemy.name}!`);
+                player.reset();
+            }
+        });
     };
 
     /* This is called by the update function and loops through all of the

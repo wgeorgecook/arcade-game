@@ -1,11 +1,12 @@
 // Enemies our player must avoid
-const Enemy = function(x, y) {
+const Enemy = function(name, x, y) {
+    this.name = name;
     // starting position
     this.x = x;
     this.y = y;
 
     // array to define the start area
-    this.enemySpace = [(this.x - 10), (this.x + 10), (this.y + 10), (this.y - 10)];
+    this.enemySpace = [this.x, this.y]
 
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
@@ -27,12 +28,12 @@ const Enemy = function(x, y) {
     // all computers.
         if (this.x > 525) {
             this.x = -95;
-            this.enemySpace = [(this.x - 10), (this.x + 10), (this.y + 10), (this.y - 10)];
+            this.enemySpace = [this.x, this.y];
         } else {
             newX = this.x + 1;
             movement = (this.x + 1) * dt;
             this.x = newX;
-            this.enemySpace = [(this.x - 10), (this.x + 10), (this.y + 10), (this.y - 10)];
+            this.enemySpace = [this.x, this.y];
         }
 
         
@@ -54,25 +55,25 @@ const Player = function(x, y) {
     this.sprite = 'images/char-princess-girl.png';
 
     // array to define the sprite area
-    this.playerSpace = [(this.x - 10), (this.x + 10), (this.y + 10), (this.y - 10)];
+    this.playerSpace = [this.x, this.y];
 
     this.update = function(keyPress) {
         if (keyPress === 'left') {
             if (this.x <= 0) {
                 this.x = this.x + 20;
-                this.playerSpace = [(this.x - 10), (this.x + 10), (this.y + 10), (this.y - 10)];
+                this.playerSpace = [this.x, this.y];
             } else {
                 this.x = this.x - 20;
-                this.playerSpace = [(this.x - 10), (this.x + 10), (this.y + 10), (this.y - 10)];
+                this.playerSpace = [this.x, this.y];
             }
         } 
         if (keyPress === 'right') {
             if (this.x >= 410) {
                 this.x = this.x - 20;
-                this.playerSpace = [(this.x - 10), (this.x + 10), (this.y + 10), (this.y - 10)];
+                this.playerSpace = [this.x, this.y];
             } else {
                 this.x = this.x + 20;
-                this.playerSpace = [(this.x - 10), (this.x + 10), (this.y + 10), (this.y - 10)];
+                this.playerSpace = [this.x, this.y];
             }
         }
         if (keyPress === 'up') {
@@ -82,16 +83,16 @@ const Player = function(x, y) {
                 setTimeout((() => this.reset()), 500);
             } else {
                 this.y = this.y - 20;
-                this.playerSpace = [(this.x - 10), (this.x + 10), (this.y + 10), (this.y - 10)];
+                this.playerSpace = [this.x, this.y];
             }
         }
         if (keyPress === 'down') {
             if (this.y >= 400) {
                 this.y = this.y - 20;
-                this.playerSpace = [(this.x - 10), (this.x + 10), (this.y + 10), (this.y - 10)];
+                this.playerSpace = [this.x, this.y];
             } else {
                 this.y = this.y + 20;
-                this.playerSpace = [(this.x - 10), (this.x + 10), (this.y + 10), (this.y - 10)];
+                this.playerSpace = [this.x, this.y];
             }
         } else {
             null;
@@ -124,9 +125,9 @@ const Player = function(x, y) {
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
 
-let bug1 = new Enemy(-60, 60);
-let bug2 = new Enemy(-200, 140);
-let bug3 = new Enemy(-400, 225);
+let bug1 = new Enemy("bug1", -60, 60);
+let bug2 = new Enemy("bug2", -200, 140);
+let bug3 = new Enemy("bug3", -400, 220);
 
 let player = new Player(200, 400);
 const allEnemies = [bug1, bug2, bug3];
