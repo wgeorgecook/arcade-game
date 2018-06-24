@@ -4,6 +4,9 @@ const Enemy = function(x, y) {
     this.x = x;
     this.y = y;
 
+    // array to define the start area
+    this.enemySpace = [(this.x - 10), (this.x + 10), (this.y + 10), (this.y - 10)];
+
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
 
@@ -24,10 +27,12 @@ const Enemy = function(x, y) {
     // all computers.
         if (this.x > 525) {
             this.x = -95;
+            this.enemySpace = [(this.x - 10), (this.x + 10), (this.y + 10), (this.y - 10)];
         } else {
             newX = this.x + 1;
             movement = (this.x + 1) * dt;
             this.x = newX;
+            this.enemySpace = [(this.x - 10), (this.x + 10), (this.y + 10), (this.y - 10)];
         }
 
         
@@ -48,19 +53,26 @@ const Player = function(x, y) {
     this.y = y;
     this.sprite = 'images/char-princess-girl.png';
 
+    // array to define the sprite area
+    this.playerSpace = [(this.x - 10), (this.x + 10), (this.y + 10), (this.y - 10)];
+
     this.update = function(keyPress) {
         if (keyPress === 'left') {
             if (this.x <= 0) {
                 this.x = this.x + 20;
+                this.playerSpace = [(this.x - 10), (this.x + 10), (this.y + 10), (this.y - 10)];
             } else {
                 this.x = this.x - 20;
+                this.playerSpace = [(this.x - 10), (this.x + 10), (this.y + 10), (this.y - 10)];
             }
         } 
         if (keyPress === 'right') {
             if (this.x >= 410) {
                 this.x = this.x - 20;
+                this.playerSpace = [(this.x - 10), (this.x + 10), (this.y + 10), (this.y - 10)];
             } else {
                 this.x = this.x + 20;
+                this.playerSpace = [(this.x - 10), (this.x + 10), (this.y + 10), (this.y - 10)];
             }
         }
         if (keyPress === 'up') {
@@ -70,13 +82,16 @@ const Player = function(x, y) {
                 setTimeout((() => this.reset()), 500);
             } else {
                 this.y = this.y - 20;
+                this.playerSpace = [(this.x - 10), (this.x + 10), (this.y + 10), (this.y - 10)];
             }
         }
         if (keyPress === 'down') {
             if (this.y >= 400) {
                 this.y = this.y - 20;
+                this.playerSpace = [(this.x - 10), (this.x + 10), (this.y + 10), (this.y - 10)];
             } else {
                 this.y = this.y + 20;
+                this.playerSpace = [(this.x - 10), (this.x + 10), (this.y + 10), (this.y - 10)];
             }
         } else {
             null;
