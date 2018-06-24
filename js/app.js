@@ -117,8 +117,19 @@ const Player = function(x, y) {
 }
 
 
+// Give the user a confirmation that they've won the game
+const WinModal = function() {
 
+    this.modal = document.getElementById('winmodal');
+    this.showmodal = function() {
+        //document.body.appendChild(this.modal);
+    }
 
+    this.hidemodal = function() {
+        const selectModal = document.getElementById('winmodal');
+        // selectModal[0].parentNode.removeChild(selectModal[0]);
+    }
+}
 
 
 // Now instantiate your objects.
@@ -131,6 +142,8 @@ let bug3 = new Enemy("bug3", -400, 220);
 
 let player = new Player(200, 400);
 const allEnemies = [bug1, bug2, bug3];
+
+
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.

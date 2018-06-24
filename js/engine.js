@@ -84,6 +84,7 @@ var Engine = (function(global) {
 
     function checkCollisions() {
         allEnemies.forEach(function(enemy) {
+            // set the parameters that trigger the collision and reset the game
             if ( ( (enemy.y + 35) > player.y && player.y > (enemy.y - 55) ) && ((enemy.x + 55) > player.x && player.x > (enemy.x - 55))  ){
                 console.log(`Player hit by ${enemy.name}!`);
                 player.reset();
