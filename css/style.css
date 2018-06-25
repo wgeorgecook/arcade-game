@@ -2,6 +2,16 @@ body {
     text-align: center;
 }
 
+#fullModal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    opacity: .5;
+    background-color: lightsalmon;
+}
 #winmodal, #charselection {
     display: none;
 }

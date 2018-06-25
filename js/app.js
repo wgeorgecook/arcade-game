@@ -49,6 +49,10 @@ const Enemy = function(name, x, y) {
 // This class requires an update(), render() and
 // a handleInput() method.
 const Player = function(x, y) {
+
+    // instantiate the modal object 
+    this.modal = new Modals();
+
     // starting position
     this.x = x;
     this.y = y;
@@ -80,6 +84,7 @@ const Player = function(x, y) {
             if (this.y <= 0) {
                 console.log('You win!');
                 this.y = - 20;
+                this.modal.showWinModal();
                 setTimeout((() => this.reset()), 500);
             } else {
                 this.y = this.y - 20;
@@ -118,17 +123,27 @@ const Player = function(x, y) {
 
 
 // Give the user a confirmation that they've won the game
-const WinModal = function() {
+const Modals = function() {
+    this.fullModal = document.getElementById('fullModal');
+    this.winmodal = document.getElementById('winmodal');
+    this.charselection = document.getElementById('charselection');
 
-    this.modal = document.getElementById('winmodal');
-    this.showmodal = function() {
-        //document.body.appendChild(this.modal);
-    }
+    this.showWinModal = function() {
+        this.winmodal.style.display = 'block';
+        this.fullModal.style.display = 'block';
+    };
 
-    this.hidemodal = function() {
-        const selectModal = document.getElementById('winmodal');
-        // selectModal[0].parentNode.removeChild(selectModal[0]);
-    }
+    this.hideWinModal = function() {
+        this.winmodal.style.display = 'none';
+    };
+
+    this.showCharModal = function() {
+        return null;
+    };
+
+    this.hideCharModal = function() {
+        return null;
+    };
 }
 
 
