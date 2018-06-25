@@ -13,7 +13,7 @@ const allChars = [boy, hornGirl, pinkGirl, princess];
 document.addEventListener("DOMContentLoaded", function() { 
     let charSelection = document.getElementById('charSelection');
     allChars.forEach(function(sprite) {
-        charSelection.innerHTML += `<div class='sprites' id='${sprite.name}'><img src=images/${sprite.source}>${sprite.name}<div>`;
+        charSelection.innerHTML += `<div class='sprites'><img src='images/${sprite.source}' id='${sprite.name}'>${sprite.name}<div>`;
     })
 });
 
@@ -181,7 +181,7 @@ const bug1 = new Enemy("bug1", -60, 60);
 const bug2 = new Enemy("bug2", -200, 140);
 const bug3 = new Enemy("bug3", -400, 220);
 
-// const player = new Player(200, 400);
+const player = new Player('images/char-boy.png',200, 400);
 const modal = new Modals();
 const allEnemies = [bug1, bug2, bug3];
 
@@ -203,11 +203,19 @@ document.addEventListener('keyup', function(e) {
 // listens for the reset button and character selection click
 document.addEventListener('click', function(e) {
     sprite = document.getElementsByClassName('sprites');
+    png = document.getElementsByTagName('img');
     playButton = document.getElementById('restart');
     if (e.target === playButton) {
         modal.hideWinModal();
     };
+    if (e.target.id in png) {
+        console.log(e.target.src);
+        modal.hideCharModal();
+        const player2 = new Player(e.target.src, 200, 400);
+
+    } 
     if (e.target === sprite) {
-        const player = new Player(this.id, 200, 400);
-    }
+        modal.hideCharModal();
+        const player2 = new Player(this.src, 200, 400);
+    };
 })
