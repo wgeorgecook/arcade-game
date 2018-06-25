@@ -1,15 +1,19 @@
 // Character Selection Screen
-allChars = [
-    'images/char-boy.png',
-    'images/char-cat-girl.png',
-    'images/char-horn-girl.png',
-    'images/char-pink-girl.png',
-    'images/char-princess-girl.png'
-];
+const Character = function(name, source) {
+    this.name = name;
+    this.source = source;
+}
+
+const boy = new Character('Boy', 'char-boy.png');
+const hornGirl = new Character('Horn Girl', 'char-cat-girl.png');
+const pinkGirl = new Character('Pink Girl', 'char-pink-girl.png');
+const princess = new Character('Princess Girl', 'char-princess-girl.png');
+const allChars = [boy, hornGirl, pinkGirl, princess];
+
 document.addEventListener("DOMContentLoaded", function() { 
     let charSelection = document.getElementById('charSelection');
     allChars.forEach(function(sprite) {
-        charSelection.innerHTML += `<div id='sprites'><img src=${sprite}><div>`;
+        charSelection.innerHTML += `<div id='sprites'><img src=images/${sprite.source}>${sprite.name}<div>`;
     })
 });
 
