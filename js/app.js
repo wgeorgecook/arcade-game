@@ -85,7 +85,6 @@ const Player = function(x, y) {
                 console.log('You win!');
                 this.y = - 20;
                 this.modal.showWinModal();
-                setTimeout((() => this.reset()), 500);
             } else {
                 this.y = this.y - 20;
                 this.playerSpace = [this.x, this.y];
@@ -124,17 +123,20 @@ const Player = function(x, y) {
 
 // Give the user a confirmation that they've won the game
 const Modals = function() {
+
     this.fullModal = document.getElementById('fullModal');
-    this.winmodal = document.getElementById('winmodal');
-    this.charselection = document.getElementById('charselection');
+    this.winModal = document.getElementById('winmodal');
+    this.charSelection = document.getElementById('charselection');
 
     this.showWinModal = function() {
-        this.winmodal.style.display = 'block';
+        this.winModal.style.display = 'block';
         this.fullModal.style.display = 'block';
     };
 
     this.hideWinModal = function() {
-        this.winmodal.style.display = 'none';
+        winmodal.style.display = 'none';
+        fullModal.style.display = 'none';
+        player.reset();
     };
 
     this.showCharModal = function() {
@@ -142,8 +144,10 @@ const Modals = function() {
     };
 
     this.hideCharModal = function() {
-        return null;
+        charSelection.style.display = 'none';
+        fullModal.style.display = 'none';
     };
+
 }
 
 
@@ -151,11 +155,12 @@ const Modals = function() {
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
 
-let bug1 = new Enemy("bug1", -60, 60);
-let bug2 = new Enemy("bug2", -200, 140);
-let bug3 = new Enemy("bug3", -400, 220);
+const bug1 = new Enemy("bug1", -60, 60);
+const bug2 = new Enemy("bug2", -200, 140);
+const bug3 = new Enemy("bug3", -400, 220);
 
-let player = new Player(200, 400);
+const player = new Player(200, 400);
+const modal = new Modals();
 const allEnemies = [bug1, bug2, bug3];
 
 
@@ -172,3 +177,12 @@ document.addEventListener('keyup', function(e) {
 
     player.handleInput(allowedKeys[e.keyCode]);
 });
+
+// listens for the reset button
+document.addEventListener('click', function(e) {
+
+    playButton = document.getElementById('restart');
+    if (e.target === playButton) {
+        modal.hideWinModal();
+    }
+})
