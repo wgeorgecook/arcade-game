@@ -1,3 +1,17 @@
+header {
+    font-family: Pacifico, Helvetica, sans-serif;
+    font-size: 1.5em;
+    background-color: lightblue;
+    color: lightsalmon;
+    margin: auto;
+    text-align: center;
+    padding: 2px;
+    border-radius: 10px;
+    width: 80%;
+    letter-spacing: .25em;
+}
+
+
 body {
     text-align: center;
     background-color: lightsalmon;
