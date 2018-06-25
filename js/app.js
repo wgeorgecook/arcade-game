@@ -1,3 +1,20 @@
+// Character Selection Screen
+allChars = [
+    'images/char-boy.png',
+    'images/char-cat-girl.png',
+    'images/char-horn-girl.png',
+    'images/char-pink-girl.png',
+    'images/char-princess-girl.png'
+];
+document.addEventListener("DOMContentLoaded", function() { 
+    let charSelection = document.getElementById('charSelection');
+    allChars.forEach(function(sprite) {
+        charSelection.innerHTML += `<div id='sprites'><img src=${sprite}><div>`;
+    })
+});
+
+
+
 // Enemies our player must avoid
 const Enemy = function(name, x, y) {
     this.name = name;

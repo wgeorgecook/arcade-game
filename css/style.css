@@ -1,14 +1,15 @@
 header {
     font-family: Pacifico, Helvetica, sans-serif;
-    font-size: 1.5em;
+    font-size: 1em;
     background-color: lightblue;
     color: lightsalmon;
     margin: auto;
     text-align: center;
     padding: 2px;
-    border-radius: 10px;
+    border-radius: .5em;
     width: 80%;
     letter-spacing: .25em;
+    box-shadow: 11px 14px 43px 0px rgba(0,0,0,0.75);
 }
 
 
@@ -18,7 +19,7 @@ body {
 }
 
 #fullModal {
-    display: none;
+    display: block;
     position: fixed;
     z-index: 1;
     width: 100%;
@@ -26,8 +27,21 @@ body {
     overflow: auto;
     background-color: rgba(255,160,122 ,.85); /* light salmon */
 }
-#winmodal, #charselection {
+#winmodal {
     display: none;
+    background-color: lightblue;
+    color: lightsalmon;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    opacity: .95;
+    width: 80%; /* Could be more or less, depending on screen size */
+    opacity: 1;
+    box-shadow: 11px 14px 43px 0px rgba(0,0,0,0.75);
+    border-radius: .5em;
+}
+
+#charSelection {
     background-color: lightblue;
     color: lightsalmon;
     margin: 15% auto; /* 15% from the top and centered */
