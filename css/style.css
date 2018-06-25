@@ -54,6 +54,10 @@ body {
     border-radius: .5em;
 }
 
+.sprites:hover {
+    background-color: lightsalmon;
+    color: lightblue;
+}
 #instructions {
     background-color: lightblue;
     color: lightsalmon;

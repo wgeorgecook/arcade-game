@@ -1,19 +1,19 @@
-// Character Selection Screen
+// Character object for character selection screen
 const Character = function(name, source) {
     this.name = name;
     this.source = source;
 }
 
-const boy = new Character('Boy', 'char-boy.png');
-const hornGirl = new Character('Horn Girl', 'char-cat-girl.png');
-const pinkGirl = new Character('Pink Girl', 'char-pink-girl.png');
-const princess = new Character('Princess Girl', 'char-princess-girl.png');
+const boy = new Character('Bugs', 'char-boy.png');
+const hornGirl = new Character('Kitty', 'char-cat-girl.png');
+const pinkGirl = new Character('Starflower', 'char-pink-girl.png');
+const princess = new Character('Princess', 'char-princess-girl.png');
 const allChars = [boy, hornGirl, pinkGirl, princess];
 
 document.addEventListener("DOMContentLoaded", function() { 
     let charSelection = document.getElementById('charSelection');
     allChars.forEach(function(sprite) {
-        charSelection.innerHTML += `<div id='sprites'><img src=images/${sprite.source}>${sprite.name}<div>`;
+        charSelection.innerHTML += `<div class='sprites' id='${sprite.name}'><img src=images/${sprite.source}>${sprite.name}<div>`;
     })
 });
 
@@ -22,6 +22,7 @@ document.addEventListener("DOMContentLoaded", function() {
 // Enemies our player must avoid
 const Enemy = function(name, x, y) {
     this.name = name;
+
     // starting position
     this.x = x;
     this.y = y;
@@ -69,7 +70,7 @@ const Enemy = function(name, x, y) {
 // Now write your own player class
 // This class requires an update(), render() and
 // a handleInput() method.
-const Player = function(x, y) {
+const Player = function(sprite, x, y) {
 
     // instantiate the modal object 
     this.modal = new Modals();
@@ -77,7 +78,7 @@ const Player = function(x, y) {
     // starting position
     this.x = x;
     this.y = y;
-    this.sprite = 'images/char-princess-girl.png';
+    this.sprite = sprite;
 
     // array to define the sprite area
     this.playerSpace = [this.x, this.y];
@@ -180,7 +181,7 @@ const bug1 = new Enemy("bug1", -60, 60);
 const bug2 = new Enemy("bug2", -200, 140);
 const bug3 = new Enemy("bug3", -400, 220);
 
-const player = new Player(200, 400);
+// const player = new Player(200, 400);
 const modal = new Modals();
 const allEnemies = [bug1, bug2, bug3];
 
@@ -199,11 +200,14 @@ document.addEventListener('keyup', function(e) {
     player.handleInput(allowedKeys[e.keyCode]);
 });
 
-// listens for the reset button
+// listens for the reset button and character selection click
 document.addEventListener('click', function(e) {
-
+    sprite = document.getElementsByClassName('sprites');
     playButton = document.getElementById('restart');
     if (e.target === playButton) {
         modal.hideWinModal();
+    };
+    if (e.target === sprite) {
+        const player = new Player(this.id, 200, 400);
     }
 })
