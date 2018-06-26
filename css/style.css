@@ -16,6 +16,7 @@ header {
 body {
     text-align: center;
     background-color: lightsalmon;
+    background-image: url("https://www.transparenttextures.com/patterns/always-grey.png"); /* Background pattern from Subtle Patterns */
 }
 
 #fullModal {

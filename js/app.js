@@ -13,7 +13,7 @@ const allChars = [boy, hornGirl, pinkGirl, princess];
 document.addEventListener("DOMContentLoaded", function() { 
     let charSelection = document.getElementById('charSelection');
     allChars.forEach(function(sprite) {
-        charSelection.innerHTML += `<div class='sprites'><img src='images/${sprite.source}' id='${sprite.name}'>${sprite.name}<div>`;
+        charSelection.innerHTML += `<figure class='sprites'><img src='images/${sprite.source}' id='${sprite.name}'><figcaption>${sprite.name}<figcaption><figure>`;
     })
 });
 
