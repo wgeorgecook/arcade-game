@@ -210,8 +210,8 @@ document.addEventListener('click', function(e) {
     playButton = document.getElementById('restart');
     newChar = document.getElementById('newchar');
     spoot = [];
-    allSprites.forEach(function(div) {spoot.push(div.firstElementChild.src.substring(22))})
-   
+    allSprites.forEach(function(div) {spoot.push(div.firstElementChild.src)})
+    console.log(e.target);
     if (e.target === playButton) {
         modal.hideWinModal();
     };
@@ -222,12 +222,13 @@ document.addEventListener('click', function(e) {
     };
     
     if (e.target.id in png) { // click on sprite
-        player.sprite = e.target.src.substring(22);
+        console.log(e.target);
+        player.sprite = e.target.src;
         modal.hideCharModal();
     }; 
-    if (spoot.includes(e.target.firstElementChild.src.substring(22))) { // click on div
-        
+    if (spoot.includes(e.target.firstElementChild.src) { // click on div
+        console.log(e.target);
         modal.hideCharModal();
-        player.sprite = e.target.firstElementChild.src.substring(22);
+        player.sprite = e.target.firstElementChild.src;
     };
 })
