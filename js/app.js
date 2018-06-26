@@ -223,7 +223,7 @@ document.addEventListener('click', function(e) {
     
     if (e.target.id in png) { // click on sprite
         console.log(e.target);
-        player.sprite = e.target.src;
+        player.sprite = e.target.src.split('/')[5];
         modal.hideCharModal();
     }; 
 
