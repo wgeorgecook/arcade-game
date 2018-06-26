@@ -221,12 +221,14 @@ document.addEventListener('click', function(e) {
     };
     
     if (e.target.id in png) { // click on sprite
-        player.sprite = 'images/' + e.target.src.split('images/')[1];
+        spriteName = e.target.src.split('images/')[1];
+        player.sprite = `images/${spriteName}`;
         modal.hideCharModal();
     }; 
 
     if (spoot.includes(e.target.firstElementChild.src.split('images/')[1])) { // click on div
         modal.hideCharModal();
-        player.sprite = 'images/' + e.target.firstElementChild.src.split('images/')[1];
+        spriteName = e.target.firstElementChild.src.split('images/')[1];
+        player.sprite = `images/${spriteName}`;
     };
 })
