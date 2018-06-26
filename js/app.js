@@ -162,7 +162,8 @@ const Modals = function() {
     };
 
     this.showCharModal = function() {
-        return null;
+        charSelection.style.display = 'block';
+        fullModal.style.display = 'block';
     };
 
     this.hideCharModal = function() {
@@ -180,10 +181,12 @@ const Modals = function() {
 const bug1 = new Enemy("bug1", -60, 60);
 const bug2 = new Enemy("bug2", -200, 140);
 const bug3 = new Enemy("bug3", -400, 220);
+const bug4 = new Enemy("bug4", -230, 220);
+const bug5 = new Enemy("bug5", -300, 60);
 
 const player = new Player('images/char-boy.png',200, 400);
 const modal = new Modals();
-const allEnemies = [bug1, bug2, bug3];
+const allEnemies = [bug1, bug2, bug3, bug4, bug5];
 
 
 
@@ -202,20 +205,28 @@ document.addEventListener('keyup', function(e) {
 
 // listens for the reset button and character selection click
 document.addEventListener('click', function(e) {
-    sprite = document.getElementsByClassName('sprites');
+    allSprites = document.querySelectorAll('.sprites');
     png = document.getElementsByTagName('img');
     playButton = document.getElementById('restart');
-    // console.log(e.target);
+    newChar = document.getElementById('newchar');
+    spoot = [];
+    allSprites.forEach(function(div) {spoot.push(div.firstElementChild.src.substring(22))})
+   
     if (e.target === playButton) {
         modal.hideWinModal();
     };
+
+    if (e.target === newChar){ 
+        modal.hideWinModal();
+        modal.showCharModal();
+    };
+    
     if (e.target.id in png) {
-        console.log(e.target.src);
         player.sprite = e.target.src.substring(22);
         modal.hideCharModal();
-    } 
-    if (e.target.firstElementChild.src in png) {
-        console.log(e.target.firstElementChild.src);
+    }; 
+    if (spoot.includes(e.target.firstElementChild.src.substring(22))) {
+        
         modal.hideCharModal();
         player.sprite = e.target.firstElementChild.src.substring(22);
     };
