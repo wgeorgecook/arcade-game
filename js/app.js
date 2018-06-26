@@ -71,9 +71,11 @@ const Enemy = function(name, x, y) {
 // This class requires an update(), render() and
 // a handleInput() method.
 const Player = function(sprite, x, y) {
+    this.livesLeft = 3;
 
     // instantiate the modal object 
     this.modal = new Modals();
+
 
     // starting position
     this.x = x;
@@ -139,6 +141,10 @@ const Player = function(sprite, x, y) {
         // Pass the event listener response to the update method
         this.update(keyPress);
     };
+
+    this.lifeLost = function() {
+        this.livesLeft -= 1;
+    };
 }
 
 
@@ -171,6 +177,8 @@ const Modals = function() {
     };
 
 }
+
+
 
 
 // Now instantiate your objects.
