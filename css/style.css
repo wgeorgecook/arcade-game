@@ -60,7 +60,7 @@ body {
 }
 
 .sprites {
-    width: 40%;
+    width: 100%;
     margin: auto;
     display: block;
     border-radius: .5em;
