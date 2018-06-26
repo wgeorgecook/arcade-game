@@ -75,7 +75,7 @@ const Player = function(sprite, x, y) {
 
     // instantiate the modal object 
     this.modal = new Modals();
-
+    this.lives = new livesUpdate();
 
     // starting position
     this.x = x;
@@ -144,7 +144,15 @@ const Player = function(sprite, x, y) {
 
     this.lifeLost = function() {
         this.livesLeft -= 1;
+        this.lives.update(this.livesLeft)
     };
+}
+
+const livesUpdate = function() {
+    this.update = function(lives) {
+        this.livesHTML = document.querySelector('#livespanel');
+        this.livesHTML.innerHTML = "Lives left:" + "❤".repeat(lives);
+    }
 }
 
 
@@ -212,12 +220,14 @@ document.addEventListener('keyup', function(e) {
 
 // listens for the reset button and character selection click
 document.addEventListener('click', function(e) {
+
     allSprites = document.querySelectorAll('.sprites');
     png = document.getElementsByTagName('img');
     playButton = document.getElementById('restart');
     newChar = document.getElementById('newchar');
     spoot = [];
     allSprites.forEach(function(div) {spoot.push(div.firstElementChild.src.split('images/')[1])})
+
     if (e.target === playButton) {
         modal.hideWinModal();
     };
