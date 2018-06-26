@@ -205,17 +205,18 @@ document.addEventListener('click', function(e) {
     sprite = document.getElementsByClassName('sprites');
     png = document.getElementsByTagName('img');
     playButton = document.getElementById('restart');
+    // console.log(e.target);
     if (e.target === playButton) {
         modal.hideWinModal();
     };
     if (e.target.id in png) {
         console.log(e.target.src);
+        player.sprite = e.target.src.substring(22);
         modal.hideCharModal();
-        const player2 = new Player(e.target.src, 200, 400);
-
     } 
-    if (e.target === sprite) {
+    if (e.target.firstElementChild.src in png) {
+        console.log(e.target.firstElementChild.src);
         modal.hideCharModal();
-        const player2 = new Player(this.src, 200, 400);
+        player.sprite = e.target.firstElementChild.src.substring(22);
     };
 })
