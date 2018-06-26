@@ -226,7 +226,8 @@ document.addEventListener('click', function(e) {
         player.sprite = e.target.src;
         modal.hideCharModal();
     }; 
-    if (spoot.includes(e.target.firstElementChild.src) { // click on div
+
+    if (spoot.includes(e.target.firstElementChild.src)) { // click on div
         console.log(e.target);
         modal.hideCharModal();
         player.sprite = e.target.firstElementChild.src;
