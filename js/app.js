@@ -221,11 +221,11 @@ document.addEventListener('click', function(e) {
         modal.showCharModal();
     };
     
-    if (e.target.id in png) {
+    if (e.target.id in png) { // click on sprite
         player.sprite = e.target.src.substring(22);
         modal.hideCharModal();
     }; 
-    if (spoot.includes(e.target.firstElementChild.src.substring(22))) {
+    if (spoot.includes(e.target.firstElementChild.src.substring(22))) { // click on div
         
         modal.hideCharModal();
         player.sprite = e.target.firstElementChild.src.substring(22);
