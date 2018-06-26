@@ -210,8 +210,7 @@ document.addEventListener('click', function(e) {
     playButton = document.getElementById('restart');
     newChar = document.getElementById('newchar');
     spoot = [];
-    allSprites.forEach(function(div) {spoot.push(div.firstElementChild.src.split('/')[5])})
-    console.log(e.target);
+    allSprites.forEach(function(div) {spoot.push(div.firstElementChild.src.split('images/')[1])})
     if (e.target === playButton) {
         modal.hideWinModal();
     };
@@ -222,14 +221,12 @@ document.addEventListener('click', function(e) {
     };
     
     if (e.target.id in png) { // click on sprite
-        console.log(e.target);
-        player.sprite = e.target.src.split('/')[5];
+        player.sprite = 'images/' + e.target.src.split('images/')[1];
         modal.hideCharModal();
     }; 
 
-    if (spoot.includes(e.target.firstElementChild.src.split('/')[5])) { // click on div
-        console.log(e.target);
+    if (spoot.includes(e.target.firstElementChild.src.split('images/')[1])) { // click on div
         modal.hideCharModal();
-        player.sprite = e.target.firstElementChild.src.split('/')[5];
+        player.sprite = 'images/' + e.target.firstElementChild.src.split('images/')[1];
     };
 })
