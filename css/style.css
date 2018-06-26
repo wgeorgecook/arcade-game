@@ -70,3 +70,23 @@ body {
     box-shadow: 11px 14px 43px 0px rgba(0,0,0,0.75);
     border-radius: .5em;
 }
+
+button {
+    background-color: lightsalmon; 
+    border: solid lightblue;
+    color: lightblue;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    font-size: 1em;
+    margin: auto;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+button:hover {
+    background-color: lightblue; 
+    border: solid lightsalmon;
+    color: lightsalmon;
+}
