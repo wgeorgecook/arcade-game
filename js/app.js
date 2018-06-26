@@ -104,7 +104,6 @@ const Player = function(sprite, x, y) {
         }
         if (keyPress === 'up') {
             if (this.y <= 0) {
-                console.log('You win!');
                 this.y = - 20;
                 this.modal.showWinModal();
             } else {
