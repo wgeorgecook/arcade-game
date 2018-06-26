@@ -1,6 +1,8 @@
-frontend-nanodegree-arcade-game
+Frogger Clone with JavaScript
 ===============================
+#Your Own Copy
+This is a simple Frogger clone running on the web! To run a local copy, download or clone this repo and start a local webserver. Navigate to index.html in your browser and you're good to go! No libraries or anything extra to download. 
 
-Students should use this [rubric](https://review.udacity.com/#!/projects/2696458597/rubric) for self-checking their submission. Make sure the functions you write are **object-oriented** - either class functions (like Player and Enemy) or class prototype functions such as Enemy.prototype.checkCollisions, and that the keyword 'this' is used appropriately within your class and class prototype functions to refer to the object the function is called upon. Also be sure that the **readme.md** file is updated with your instructions on both how to 1. Run and 2. Play your arcade game.
-
-For detailed instructions on how to get started, check out this [guide](https://docs.google.com/document/d/1v01aScPjSWCCWQLIpFqvg3-vXLH2e8_SZQKC8jNO0Dc/pub?embedded=true).
+#Instructions
+Use the left, right, up, and down arrow keys to navigate. Avoid the bugs and make it to the water to win! 
+You can select one of five characters, and have the opportunity to switch between rounds. 
