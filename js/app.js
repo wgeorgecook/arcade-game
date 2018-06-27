@@ -161,6 +161,7 @@ const Modals = function() {
 
     this.fullModal = document.getElementById('fullModal');
     this.winModal = document.getElementById('winmodal');
+    this.loseModal = document.querySelector('#losemodal');
     this.charSelection = document.getElementById('charselection');
 
     this.showWinModal = function() {
@@ -182,6 +183,18 @@ const Modals = function() {
     this.hideCharModal = function() {
         charSelection.style.display = 'none';
         fullModal.style.display = 'none';
+    };
+
+    this.showLoseModal = function() {
+        loseModal.style.display = 'block';
+        fullModal.style.display = 'block';
+
+    };
+
+    this.hideLoseModal = function() {
+        loseModal.style.display = 'none';
+        fullModal.style.display = 'none';
+        player.reset();
     };
 
 }
