@@ -110,7 +110,7 @@ const Player = function(sprite, x, y) {
                 difficulty.upDifficulty();
                 if (difficulty.stage > 3) {
                     alert("You've beat the game!");
-                    difficulty.stage = 0;
+                    difficulty.stage = 1;
                 }
                 difficulty.updateEnemyCount();
                 difficulty.updateStage(difficulty.stage);
@@ -165,6 +165,9 @@ const livesUpdate = function() {
             modal.showLoseModal();
             this.livesHTML.innerHTML = "Lives left:" + "❤❤❤";
             player.livesLeft = 3;
+            difficulty.stage = 1;
+            difficulty.updateStage(difficulty.stage);
+            difficulty.updateEnemyCount();
         };
     };
 }
@@ -213,6 +216,7 @@ const Modals = function() {
     this.showWinModal = function() {
         this.winModal.style.display = 'block';
         this.fullModal.style.display = 'block';
+        player.reset();
     };
 
     this.hideWinModal = function() {
@@ -221,7 +225,7 @@ const Modals = function() {
         this.fullModal.style.display = 'none';
         this.livesHTML.innerHTML = "Lives left:" + "❤❤❤";
         player.livesLeft = 3;
-        player.reset();
+
     };
 
     this.showCharModal = function() {
@@ -237,13 +241,14 @@ const Modals = function() {
     this.showLoseModal = function() {
         this.loseModal.style.display = 'block';
         this.fullModal.style.display = 'block';
+        player.reset();
 
     };
 
     this.hideLoseModal = function() {
         this.loseModal.style.display = 'none';
         this.fullModal.style.display = 'none';
-        player.reset();
+
     };
 
 }
