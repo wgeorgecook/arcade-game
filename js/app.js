@@ -113,6 +113,7 @@ const Player = function(sprite, x, y) {
                     difficulty.stage = 0;
                 }
                 difficulty.updateEnemyCount();
+                difficulty.updateStage(difficulty.stage);
                 this.modal.showWinModal();
 
             } else {
@@ -170,11 +171,11 @@ const livesUpdate = function() {
 
 // Ups the difficulty after winning
 const setDifficulty = function() {
-    this.stage = 0;
+    this.stage = 1;
 
     this.upDifficulty = function() {
         this.stage += 1;
-    }
+    };
 
     this.updateEnemyCount = function() {
         switch (this.stage) {
@@ -190,7 +191,13 @@ const setDifficulty = function() {
             default:
                 allEnemies = [bug1, bug2, bug3];
                 break;
-        }
+        };
+    };
+
+    this.updateStage = function(level) {
+        this.stageHTML = document.querySelector('#stage');
+        this.stageHTML.innerHTML = `Stage: ${level}/3`
+
     }
 }
 
