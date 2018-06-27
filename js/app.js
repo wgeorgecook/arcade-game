@@ -170,7 +170,7 @@ const Modals = function() {
     };
 
     this.hideWinModal = function() {
-        this.winmodal.style.display = 'none';
+        this.winModal.style.display = 'none';
         this.fullModal.style.display = 'none';
         player.reset();
     };
