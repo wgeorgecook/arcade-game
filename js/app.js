@@ -10,7 +10,7 @@ const pinkGirl = new Character('Starflower', 'char-pink-girl.png');
 const princess = new Character('Princess', 'char-princess-girl.png');
 const allChars = [boy, hornGirl, pinkGirl, princess];
 
-document.addEventListener("DOMContentLoaded", function() { 
+document.addEventListener("DOMContentLoaded", function() {
     let charSelection = document.getElementById('charSelection');
     allChars.forEach(function(sprite) {
         charSelection.innerHTML += `<figure class='sprites'><img src='images/${sprite.source}' id='${sprite.name}'><figcaption>${sprite.name}<figcaption><figure>`;
@@ -58,7 +58,7 @@ const Enemy = function(name, x, y) {
             this.enemySpace = [this.x, this.y];
         }
 
-        
+
     };
 
 };
@@ -73,7 +73,7 @@ const Enemy = function(name, x, y) {
 const Player = function(sprite, x, y) {
     this.livesLeft = 3;
 
-    // instantiate the modal object 
+    // instantiate the modal object
     this.modal = new Modals();
     this.lives = new livesUpdate();
 
@@ -94,7 +94,7 @@ const Player = function(sprite, x, y) {
                 this.x = this.x - 20;
                 this.playerSpace = [this.x, this.y];
             }
-        } 
+        }
         if (keyPress === 'right') {
             if (this.x >= 410) {
                 this.x = this.x - 20;
@@ -125,7 +125,7 @@ const Player = function(sprite, x, y) {
             null;
         };
     };
-    
+
     this.render = function() {
         ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 
@@ -258,21 +258,21 @@ document.addEventListener('click', function(e) {
         modal.hideLoseModal();
     };
 
-    if (e.target === winNewChar){ 
+    if (e.target === winNewChar){
         modal.hideWinModal();
         modal.showCharModal();
     };
 
-    if (e.target === loseNewChar){ 
+    if (e.target === loseNewChar){
         modal.hideLoseModal();
         modal.showCharModal();
     };
-    
+
     if (e.target.id in png) { // click on sprite
         spriteName = e.target.src.split('images/')[1];
         player.sprite = `images/${spriteName}`;
         modal.hideCharModal();
-    }; 
+    };
 
     if (e.target.classList.contains('sprites') ) { // click on div
         modal.hideCharModal();
