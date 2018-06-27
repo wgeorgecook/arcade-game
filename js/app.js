@@ -152,7 +152,12 @@ const livesUpdate = function() {
     this.update = function(lives) {
         this.livesHTML = document.querySelector('#livespanel');
         this.livesHTML.innerHTML = "Lives left:" + "❤".repeat(lives);
-    }
+        if (lives === 0) {
+            modal.showLoseModal();
+            this.livesHTML.innerHTML = "Lives left:" + "❤❤❤";
+            player.livesLeft = 3;
+        };
+    };
 }
 
 
@@ -170,8 +175,11 @@ const Modals = function() {
     };
 
     this.hideWinModal = function() {
+        this.livesHTML = document.querySelector('#livespanel');
         this.winModal.style.display = 'none';
         this.fullModal.style.display = 'none';
+        this.livesHTML.innerHTML = "Lives left:" + "❤❤❤";
+        player.livesLeft = 3;
         player.reset();
     };
 
