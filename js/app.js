@@ -248,8 +248,7 @@ document.addEventListener('click', function(e) {
     losePlayButton = document.getElementById('loseRestart');
     winNewChar = document.getElementById('winNewChar');
     loseNewChar = document.getElementById('loseNewChar');
-    spoot = [];
-    allSprites.forEach(function(div) {spoot.push(div.firstElementChild.src.split('images/')[1])})
+
 
     if (e.target === winPlayButton) {
         modal.hideWinModal();
@@ -275,7 +274,7 @@ document.addEventListener('click', function(e) {
         modal.hideCharModal();
     }; 
 
-    if (spoot.includes(e.target.firstElementChild.src.split('images/')[1])) { // click on div
+    if (e.target.classList.contains('sprites') ) { // click on div
         modal.hideCharModal();
         spriteName = e.target.firstElementChild.src.split('images/')[1];
         player.sprite = `images/${spriteName}`;
