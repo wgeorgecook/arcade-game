@@ -87,7 +87,7 @@ const Player = function(sprite, x, y) {
 
     this.update = function(keyPress) {
         if (keyPress === 'left') {
-            if (this.x <= 0) {
+            if (this.x <= 0) {player.reset();
                 this.x = this.x + 20;
                 this.playerSpace = [this.x, this.y];
             } else {
@@ -111,6 +111,8 @@ const Player = function(sprite, x, y) {
                 if (difficulty.stage > 3) {
                     alert("You've beat the game!");
                     difficulty.stage = 1;
+                    this.lives.update(3);
+
                 }
                 difficulty.updateEnemyCount();
                 difficulty.updateStage(difficulty.stage);
@@ -223,8 +225,10 @@ const Modals = function() {
         this.livesHTML = document.querySelector('#livespanel');
         this.winModal.style.display = 'none';
         this.fullModal.style.display = 'none';
+        /*
         this.livesHTML.innerHTML = "Lives left:" + "❤❤❤";
         player.livesLeft = 3;
+        */
 
     };
 
