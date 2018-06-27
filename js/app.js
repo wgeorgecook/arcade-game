@@ -162,7 +162,7 @@ const Modals = function() {
     this.fullModal = document.getElementById('fullModal');
     this.winModal = document.getElementById('winmodal');
     this.loseModal = document.querySelector('#losemodal');
-    this.charSelection = document.getElementById('charselection');
+    this.charSelection = document.getElementById('charSelection');
 
     this.showWinModal = function() {
         this.winModal.style.display = 'block';
@@ -170,30 +170,30 @@ const Modals = function() {
     };
 
     this.hideWinModal = function() {
-        winmodal.style.display = 'none';
-        fullModal.style.display = 'none';
+        this.winmodal.style.display = 'none';
+        this.fullModal.style.display = 'none';
         player.reset();
     };
 
     this.showCharModal = function() {
-        charSelection.style.display = 'block';
-        fullModal.style.display = 'block';
+        this.charSelection.style.display = 'block';
+        this.fullModal.style.display = 'block';
     };
 
     this.hideCharModal = function() {
-        charSelection.style.display = 'none';
-        fullModal.style.display = 'none';
+        this.charSelection.style.display = 'none';
+        this.fullModal.style.display = 'none';
     };
 
     this.showLoseModal = function() {
-        loseModal.style.display = 'block';
-        fullModal.style.display = 'block';
+        this.loseModal.style.display = 'block';
+        this.fullModal.style.display = 'block';
 
     };
 
     this.hideLoseModal = function() {
-        loseModal.style.display = 'none';
-        fullModal.style.display = 'none';
+        this.loseModal.style.display = 'none';
+        this.fullModal.style.display = 'none';
         player.reset();
     };
 
@@ -236,17 +236,28 @@ document.addEventListener('click', function(e) {
 
     allSprites = document.querySelectorAll('.sprites');
     png = document.getElementsByTagName('img');
-    playButton = document.getElementById('restart');
-    newChar = document.getElementById('newchar');
+    winPlayButton = document.getElementById('winRestart');
+    losePlayButton = document.getElementById('loseRestart');
+    winNewChar = document.getElementById('winNewChar');
+    loseNewChar = document.getElementById('loseNewChar');
     spoot = [];
     allSprites.forEach(function(div) {spoot.push(div.firstElementChild.src.split('images/')[1])})
 
-    if (e.target === playButton) {
+    if (e.target === winPlayButton) {
         modal.hideWinModal();
     };
 
-    if (e.target === newChar){ 
+    if (e.target === losePlayButton) {
+        modal.hideLoseModal();
+    };
+
+    if (e.target === winNewChar){ 
         modal.hideWinModal();
+        modal.showCharModal();
+    };
+
+    if (e.target === loseNewChar){ 
+        modal.hideLoseModal();
         modal.showCharModal();
     };
     
