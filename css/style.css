@@ -1,6 +1,7 @@
 
 html {
-    background-image: url("../images/always-grey.png"); /* Background pattern from Subtle Patterns */
+    /* Background pattern from Subtle Patterns */
+    background-image: url("../images/always-grey.png");
     background-color: lightsalmon;
     background-repeat: repeat;
 }
@@ -90,7 +91,8 @@ canvas {
 }
 
 button {
-    background-color: lightsalmon; 
+    /* Thanks to W3 School for help styling buttons */
+    background-color: lightsalmon;
     border: solid lightblue;
     color: lightblue;
     padding: 15px 32px;
@@ -105,7 +107,7 @@ button {
 }
 
 button:hover {
-    background-color: lightblue; 
+    background-color: lightblue;
     border: solid lightsalmon;
     color: lightsalmon;
 }
