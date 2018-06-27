@@ -105,9 +105,17 @@ const Player = function(sprite, x, y) {
             }
         }
         if (keyPress === 'up') {
-            if (this.y <= 0) {
+            if (this.y <= 0) { // reached the water
                 this.y = - 20;
+                difficulty.upDifficulty();
+                if (difficulty.stage > 3) {
+                    alert("You've beat the game!");
+                    difficulty.stage = 1;
+                }
+                difficulty.updateEnemyCount();
+                difficulty.updateStage(difficulty.stage);
                 this.modal.showWinModal();
+
             } else {
                 this.y = this.y - 20;
                 this.playerSpace = [this.x, this.y];
@@ -148,6 +156,7 @@ const Player = function(sprite, x, y) {
     };
 }
 
+// Changes the displayed lives and ends the game after three hits
 const livesUpdate = function() {
     this.update = function(lives) {
         this.livesHTML = document.querySelector('#livespanel');
@@ -156,8 +165,43 @@ const livesUpdate = function() {
             modal.showLoseModal();
             this.livesHTML.innerHTML = "Lives left:" + "❤❤❤";
             player.livesLeft = 3;
+            difficulty.stage = 1;
+            difficulty.updateStage(difficulty.stage);
+            difficulty.updateEnemyCount();
         };
     };
+}
+
+// Ups the difficulty after winning
+const setDifficulty = function() {
+    this.stage = 1;
+
+    this.upDifficulty = function() {
+        this.stage += 1;
+    };
+
+    this.updateEnemyCount = function() {
+        switch (this.stage) {
+            case 1:
+                allEnemies = [bug1, bug2, bug3, bug4];
+                break;
+            case 2:
+                allEnemies = [bug1, bug2, bug3, bug4, bug5];
+                break;
+            case 3:
+                allEnemies = [bug1, bug2, bug3, bug4, bug5, bug6];
+                break;
+            default:
+                allEnemies = [bug1, bug2, bug3];
+                break;
+        };
+    };
+
+    this.updateStage = function(level) {
+        this.stageHTML = document.querySelector('#stage');
+        this.stageHTML.innerHTML = `Stage: ${level}/3`
+
+    }
 }
 
 
@@ -172,6 +216,7 @@ const Modals = function() {
     this.showWinModal = function() {
         this.winModal.style.display = 'block';
         this.fullModal.style.display = 'block';
+        player.reset();
     };
 
     this.hideWinModal = function() {
@@ -180,7 +225,7 @@ const Modals = function() {
         this.fullModal.style.display = 'none';
         this.livesHTML.innerHTML = "Lives left:" + "❤❤❤";
         player.livesLeft = 3;
-        player.reset();
+
     };
 
     this.showCharModal = function() {
@@ -196,13 +241,14 @@ const Modals = function() {
     this.showLoseModal = function() {
         this.loseModal.style.display = 'block';
         this.fullModal.style.display = 'block';
+        player.reset();
 
     };
 
     this.hideLoseModal = function() {
         this.loseModal.style.display = 'none';
         this.fullModal.style.display = 'none';
-        player.reset();
+
     };
 
 }
@@ -214,15 +260,21 @@ const Modals = function() {
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
 
+const player = new Player('images/char-boy.png',200, 400);
+const modal = new Modals();
+const difficulty = new setDifficulty();
+
 const bug1 = new Enemy("bug1", -60, 60);
 const bug2 = new Enemy("bug2", -200, 140);
 const bug3 = new Enemy("bug3", -400, 220);
 const bug4 = new Enemy("bug4", -230, 220);
 const bug5 = new Enemy("bug5", -300, 60);
+const bug6 = new Enemy("bug6", -90, 140)
 
-const player = new Player('images/char-boy.png',200, 400);
-const modal = new Modals();
-const allEnemies = [bug1, bug2, bug3, bug4, bug5];
+let allEnemies = [bug1, bug2, bug3];
+
+
+
 
 
 
