@@ -1,3 +1,10 @@
+
+html {
+    background-image: url("../images/always-grey.png"); /* Background pattern from Subtle Patterns */
+    background-color: lightsalmon;
+    background-repeat: repeat;
+}
+
 header {
     font-family: Pacifico, Helvetica, sans-serif;
     font-size: 1em;
@@ -5,9 +12,8 @@ header {
     color: lightsalmon;
     margin: auto;
     text-align: center;
-    padding: 2px;
     border-radius: .5em;
-    width: 80%;
+    width: 60%;
     letter-spacing: .25em;
     box-shadow: 11px 14px 43px 0px rgba(0,0,0,0.75);
 }
@@ -15,9 +21,10 @@ header {
 
 body {
     text-align: center;
-    background-color: lightsalmon;
-    background-image: url("../images/always-grey.png"); /* Background pattern from Subtle Patterns */
-    background-repeat: repeat;
+}
+
+canvas {
+    margin: 10px;
 }
 
 #fullModal {
@@ -30,7 +37,7 @@ body {
     overflow: auto;
     background-color: rgba(255,160,122 ,.85); /* light salmon */
 }
-#winmodal {
+#winmodal, #losemodal {
     display: none;
     background-color: lightblue;
     color: lightsalmon;
@@ -60,7 +67,7 @@ body {
 }
 
 .sprites {
-    width: 100%;
+    width: 65%;
     margin: auto;
     display: block;
     border-radius: .5em;
@@ -75,9 +82,9 @@ body {
     font-weight: bold;
     font-size: 1em;
     margin: auto;
-    width: 80%;
-    height: 20%;
-    padding: 1em;
+    width: 40%;
+    height: auto;
+    padding: .2em;
     box-shadow: 11px 14px 43px 0px rgba(0,0,0,0.75);
     border-radius: .5em;
 }
