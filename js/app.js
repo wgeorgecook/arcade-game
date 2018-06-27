@@ -87,7 +87,7 @@ const Player = function(sprite, x, y) {
 
     this.update = function(keyPress) {
         if (keyPress === 'left') {
-            if (this.x <= 0) {player.reset();
+            if (this.x <= 0) {
                 this.x = this.x + 20;
                 this.playerSpace = [this.x, this.y];
             } else {
