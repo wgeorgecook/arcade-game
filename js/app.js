@@ -219,45 +219,43 @@ const Modals = function() {
     this.loseModal = document.querySelector('#losemodal');
     this.charSelection = document.getElementById('charSelection');
 
-    this.showWinModal = function() {
-        this.winModal.style.display = 'block';
-        this.fullModal.style.display = 'block';
-        player.reset();
-    };
+};
 
-    this.hideWinModal = function() {
-        this.livesHTML = document.querySelector('#livespanel');
-        this.winModal.style.display = 'none';
-        this.fullModal.style.display = 'none';
-        /*
-        this.livesHTML.innerHTML = "Lives left:" + "❤❤❤";
-        player.livesLeft = 3;
-        */
+Modals.prototype.showWinModal = function() {
+    this.winModal.style.display = 'block';
+    this.fullModal.style.display = 'block';
+    player.reset();
+};
 
-    };
+Modals.prototype.hideWinModal = function() {
+    this.livesHTML = document.querySelector('#livespanel');
+    this.winModal.style.display = 'none';
+    this.fullModal.style.display = 'none';
 
-    this.showCharModal = function() {
-        this.charSelection.style.display = 'block';
-        this.fullModal.style.display = 'block';
-    };
+};
 
-    this.hideCharModal = function() {
-        this.charSelection.style.display = 'none';
-        this.fullModal.style.display = 'none';
-    };
+Modals.prototype.showCharModal = function() {
+    this.charSelection.style.display = 'block';
+    this.fullModal.style.display = 'block';
+};
 
-    this.showLoseModal = function() {
-        this.loseModal.style.display = 'block';
-        this.fullModal.style.display = 'block';
-        player.reset();
+Modals.prototype.hideCharModal = function() {
+    this.charSelection.style.display = 'none';
+    this.fullModal.style.display = 'none';
+};
 
-    };
+Modals.prototype.showLoseModal = function() {
+    this.loseModal.style.display = 'block';
+    this.fullModal.style.display = 'block';
+    player.reset();
 
-    this.hideLoseModal = function() {
-        this.loseModal.style.display = 'none';
-        this.fullModal.style.display = 'none';
+};
 
-    };
+Modals.prototype.hideLoseModal = function() {
+    this.loseModal.style.display = 'none';
+    this.fullModal.style.display = 'none';
+
+};
 
 }
 
