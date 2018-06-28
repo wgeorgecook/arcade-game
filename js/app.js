@@ -37,29 +37,31 @@ const Enemy = function(name, x, y) {
     // a helper we've provided to easily load images
     this.sprite = 'images/enemy-bug.png';
 
-    // Draw the enemy on the screen, required method for game
-    this.render = function() { // initial location
-        ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-    };
+};
 
-    // Update the enemy's position, required method for game
-    // Parameter: dt, a time delta between ticks
-    this.update = function(dt) { // move across the screen
-    // You should multiply any movement by the dt parameter
-    // which will ensure the game runs at the same speed for
-    // all computers.
-        if (this.x > 525) {
-            this.x = -95;
-            this.enemySpace = [this.x, this.y];
-        } else {
-            newX = this.x + 1;
-            movement = (this.x + 1) * dt;
-            this.x = newX;
-            this.enemySpace = [this.x, this.y];
-        }
+// Draw the enemy on the screen, required method for game
+Enemy.prototype.render = function() { // initial location
+    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+};
+
+// Update the enemy's position, required method for game
+// Parameter: dt, a time delta between ticks
+Enemy.prototype.update = function(dt) { // move across the screen
+// You should multiply any movement by the dt parameter
+// which will ensure the game runs at the same speed for
+// all computers.
+    if (this.x > 525) {
+        this.x = -95;
+        this.enemySpace = [this.x, this.y];
+    } else {
+        newX = this.x + 1;
+        movement = (this.x + 1) * dt;
+        this.x = newX;
+        this.enemySpace = [this.x, this.y];
+    }
 
 
-    };
+};
 
 };
 
