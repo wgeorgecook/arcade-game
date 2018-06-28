@@ -159,7 +159,7 @@ Player.prototype.lifeLost = function() {
     this.livesLeft -= 1;
     this.lives.update(this.livesLeft)
 };
-}
+
 
 // Changes the displayed lives and ends the game after three hits
 const livesUpdate = function() {
@@ -178,36 +178,37 @@ const livesUpdate = function() {
 }
 
 // Ups the difficulty after winning
-const setDifficulty = function() {
+const SetDifficulty = function() {
     this.stage = 1;
+};
 
-    this.upDifficulty = function() {
-        this.stage += 1;
+SetDifficulty.prototype.upDifficulty = function() {
+    this.stage += 1;
+};
+
+SetDifficulty.prototype.updateEnemyCount = function() {
+    switch (this.stage) {
+        case 1:
+            allEnemies = [bug1, bug2, bug3, bug4];
+            break;
+        case 2:
+            allEnemies = [bug1, bug2, bug3, bug4, bug5];
+            break;
+        case 3:
+            allEnemies = [bug1, bug2, bug3, bug4, bug5, bug6];
+            break;
+        default:
+            allEnemies = [bug1, bug2, bug3];
+            break;
     };
+};
 
-    this.updateEnemyCount = function() {
-        switch (this.stage) {
-            case 1:
-                allEnemies = [bug1, bug2, bug3, bug4];
-                break;
-            case 2:
-                allEnemies = [bug1, bug2, bug3, bug4, bug5];
-                break;
-            case 3:
-                allEnemies = [bug1, bug2, bug3, bug4, bug5, bug6];
-                break;
-            default:
-                allEnemies = [bug1, bug2, bug3];
-                break;
-        };
-    };
+SetDifficulty.prototype.updateStage = function(level) {
+    this.stageHTML = document.querySelector('#stage');
+    this.stageHTML.innerHTML = `Stage: ${level}/3`
 
-    this.updateStage = function(level) {
-        this.stageHTML = document.querySelector('#stage');
-        this.stageHTML.innerHTML = `Stage: ${level}/3`
+};
 
-    }
-}
 
 
 // Give the user a confirmation that they've won the game
