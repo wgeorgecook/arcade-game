@@ -63,7 +63,6 @@ Enemy.prototype.update = function(dt) { // move across the screen
 
 };
 
-};
 
 
 
@@ -87,77 +86,79 @@ const Player = function(sprite, x, y) {
     // array to define the sprite area
     this.playerSpace = [this.x, this.y];
 
-    this.update = function(keyPress) {
-        if (keyPress === 'left') {
-            if (this.x <= 0) {
-                this.x = this.x + 20;
-                this.playerSpace = [this.x, this.y];
-            } else {
-                this.x = this.x - 20;
-                this.playerSpace = [this.x, this.y];
-            }
-        }
-        if (keyPress === 'right') {
-            if (this.x >= 410) {
-                this.x = this.x - 20;
-                this.playerSpace = [this.x, this.y];
-            } else {
-                this.x = this.x + 20;
-                this.playerSpace = [this.x, this.y];
-            }
-        }
-        if (keyPress === 'up') {
-            if (this.y <= 0) { // reached the water
-                this.y = - 20;
-                difficulty.upDifficulty();
-                if (difficulty.stage > 3) {
-                    alert("You've beat the game!");
-                    difficulty.stage = 1;
-                    this.lives.update(3);
+};
 
-                }
-                difficulty.updateEnemyCount();
-                difficulty.updateStage(difficulty.stage);
-                this.modal.showWinModal();
-
-            } else {
-                this.y = this.y - 20;
-                this.playerSpace = [this.x, this.y];
-            }
-        }
-        if (keyPress === 'down') {
-            if (this.y >= 400) {
-                this.y = this.y - 20;
-                this.playerSpace = [this.x, this.y];
-            } else {
-                this.y = this.y + 20;
-                this.playerSpace = [this.x, this.y];
-            }
+Player.prototype.update = function(keyPress) {
+    if (keyPress === 'left') {
+        if (this.x <= 0) {
+            this.x = this.x + 20;
+            this.playerSpace = [this.x, this.y];
         } else {
-            null;
-        };
-    };
-
-    this.render = function() {
-        ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-
-    };
-
-    this.reset = function() {
-        // place the player back at the start
-        this.x = 200;
-        this.y = 400;
+            this.x = this.x - 20;
+            this.playerSpace = [this.x, this.y];
+        }
     }
+    if (keyPress === 'right') {
+        if (this.x >= 410) {
+            this.x = this.x - 20;
+            this.playerSpace = [this.x, this.y];
+        } else {
+            this.x = this.x + 20;
+            this.playerSpace = [this.x, this.y];
+        }
+    }
+    if (keyPress === 'up') {
+        if (this.y <= 0) { // reached the water
+            this.y = - 20;
+            difficulty.upDifficulty();
+            if (difficulty.stage > 3) {
+                alert("You've beat the game!");
+                difficulty.stage = 1;
+                this.lives.update(3);
 
-    this.handleInput = function(keyPress) {
-        // Pass the event listener response to the update method
-        this.update(keyPress);
-    };
+            }
+            difficulty.updateEnemyCount();
+            difficulty.updateStage(difficulty.stage);
+            this.modal.showWinModal();
 
-    this.lifeLost = function() {
-        this.livesLeft -= 1;
-        this.lives.update(this.livesLeft)
+        } else {
+            this.y = this.y - 20;
+            this.playerSpace = [this.x, this.y];
+        }
+    }
+    if (keyPress === 'down') {
+        if (this.y >= 400) {
+            this.y = this.y - 20;
+            this.playerSpace = [this.x, this.y];
+        } else {
+            this.y = this.y + 20;
+            this.playerSpace = [this.x, this.y];
+        }
+    } else {
+        null;
     };
+};
+
+Player.prototype.render = function() {
+    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+
+};
+
+Player.prototype.reset = function() {
+    // place the player back at the start
+    this.x = 200;
+    this.y = 400;
+}
+
+Player.prototype.handleInput = function(keyPress) {
+    // Pass the event listener response to the update method
+    this.update(keyPress);
+};
+
+Player.prototype.lifeLost = function() {
+    this.livesLeft -= 1;
+    this.lives.update(this.livesLeft)
+};
 }
 
 // Changes the displayed lives and ends the game after three hits
