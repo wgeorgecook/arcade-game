@@ -257,7 +257,7 @@ Modals.prototype.hideLoseModal = function() {
 
 };
 
-}
+
 
 
 
