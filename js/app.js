@@ -258,17 +258,13 @@ Modals.prototype.hideLoseModal = function() {
 };
 
 
-
-
-
-
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
 
 const player = new Player('images/char-boy.png',200, 400);
 const modal = new Modals();
-const difficulty = new setDifficulty();
+const difficulty = new SetDifficulty();
 
 const bug1 = new Enemy("bug1", -60, 60);
 const bug2 = new Enemy("bug2", -200, 140);
